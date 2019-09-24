@@ -1,0 +1,38 @@
+.main {
+  margin: 0 auto;
+  text-align: center;
+  filter: none;
+}
+
+.main h1 {
+  font-family: "Mansalva", cursive;
+  font-size: 7.5vw;
+  color: hsla(0, 95%, 95%, 1);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.textBoxOne {
+  font-size: 24px;
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  color: hsla(0, 95%, 95%, 1);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.searchBoxArea {
+  margin: 20px;
+  font-size: 16px;
+}
+
+.searchBoxArea input {
+  width: 400px;
+  height: 30px;
+  padding: 10px;
+}
+
+/* font-family: 'Mansalva', cursive;
+font-family: 'DM Sans', sans-serif;
+ */
