@@ -28,11 +28,42 @@
 }
 
 .searchBoxArea input {
-  width: 400px;
-  height: 30px;
+  width: 50%;
+  height: 32px;
   padding: 10px;
 }
 
+.results {
+  color: white;
+}
+
+.results h3 {
+  font-size: 48px;
+  font-family: "Mansalva", cursive;
+}
+
+.results h4 {
+  font-size: 38px;
+}
+
+.results h5 {
+  font-size: 30px;
+}
+
+.starry {
+  color: gold;
+  font-size: 15px;
+}
+
+#No {
+  color: red;
+  font-size: 55px;
+}
+
+#Yes {
+  color: #28a745;
+  font-size: 55px;
+}
 /* font-family: 'Mansalva', cursive;
 font-family: 'DM Sans', sans-serif;
  */

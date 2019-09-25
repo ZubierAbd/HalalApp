@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "name": "Pizza Pizza",
+      "halalness": true,
+      "address": "many",
+      "cuisine": "Italian",
+      "rating": 5
+    },
+    {
+      "name": "Pizza Pizza",
+      "halalness": true,
+      "address": "many",
+      "cuisine": "Italian",
+      "rating": 5
+    },
+    {
+      "name": "Pizza Pizza",
+      "halalness": true,
+      "address": "many",
+      "cuisine": "Italian",
+      "rating": 5
+    },
+    {
+      "name": "Pizza Pizza",
+      "halalness": true,
+      "address": "many",
+      "cuisine": "Italian",
+      "rating": 5
+    },
+    {
+      "name": "Pizza Pizza",
+      "halalness": true,
+      "address": "many",
+      "cuisine": "Italian",
+      "rating": 5
+    },
+    {
+      "name": "Pizza Pizza",
+      "halalness": true,
+      "address": "many",
+      "cuisine": "Italian",
+      "rating": 5
+    }
+  ]
+}

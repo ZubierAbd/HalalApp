@@ -3,18 +3,41 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import axios from "axios";
 
-function App() {
-  const [isDisplayed, showDisplayed] = useState(false);
-  return (
-    <div className="main">
-      <Container>
-        <Title className="title" title="Is it Halal?"></Title>
-        <TextBoxOne></TextBoxOne>
-        <SearchBoxArea></SearchBoxArea>
-      </Container>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showDetails: true,
+      name: "Pizza Pizza",
+      address: "181 Wynford Drive",
+      halalness: true,
+      rating: 5
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="main">
+          <Container>
+            <Title className="title" title="Is it Halal?"></Title>
+            <TextBoxOne></TextBoxOne>
+            <SearchBoxArea></SearchBoxArea>
+            {this.state.showDetails ? (
+              <Results
+                name={this.state.name}
+                address={this.state.address}
+                halalness={this.state.halalness}
+                rating={this.state.rating}
+              ></Results>
+            ) : null}
+          </Container>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
@@ -27,8 +50,8 @@ function TextBoxOne() {
   return (
     <div className="textBoxOne">
       <p>
-        We know how difficult it is to find Halal eating options in Canada. We
-        wanted to make it easier.
+        We know how difficult it is to find Halal eating options in Canada.
+        Let's make it easier.
       </p>
       <p>Try searching below.</p>
     </div>
@@ -48,9 +71,13 @@ class SearchBoxArea extends React.Component {
   }
 
   handleSubmit(event) {
-    if (event.keyCode === 13) {
-      alert("this is the end");
-    }
+    event.preventDefault();
+    this.setState({ showDetails: true });
+    console.log("this has been entered");
+    axios
+      .get(`https://jsonplaceholder.typicode.com/users`)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -60,7 +87,7 @@ class SearchBoxArea extends React.Component {
           <span>
             <span
               style={{ color: "white" }}
-              class="glyphicon glyphicon-search"
+              className="glyphicon glyphicon-search"
             ></span>
             <input
               type="text"
@@ -79,7 +106,11 @@ class SearchBoxArea extends React.Component {
 
 function FancySearchButton() {
   function handleClick() {
-    alert("something hapned");
+    console.log("are we hitting this boy");
+    axios
+      .get(`http://localhost:4000/listall`)
+      .then(res => console.log(res.data[0]))
+      .catch(err => console.log(err));
   }
   return (
     <div style={{ color: "white", fontSize: "15px", marginTop: "20px" }}>
@@ -92,4 +123,52 @@ function FancySearchButton() {
       </Button>
     </div>
   );
+}
+
+class Results extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { rating: this.props.rating };
+  }
+
+  render() {
+    let rating = Math.ceil(this.state.rating);
+    let array = [];
+    for (var i = 1; i < rating + 1; i++) {
+      array.push(i);
+    }
+    return (
+      <div className="results">
+        <h3>{this.props.name}</h3>
+        {this.props.halalness ? (
+          <div>
+            {" "}
+            <h3>
+              {" "}
+              <span id="Yes">Yes</span>{" "}
+            </h3>
+            <h4>It is Halal</h4>{" "}
+          </div>
+        ) : (
+          <div>
+            <h3>
+              {" "}
+              <span id="No">No</span>
+            </h3>
+            <h4>It's not Halal</h4>{" "}
+          </div>
+        )}
+        <h5>{this.props.address}</h5>
+        <div className="Stars">
+          {array.map(index => {
+            return (
+              <span key={index} className="glyphicon glyphicon-star starry">
+                {" "}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 }
