@@ -3,42 +3,37 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import SubmitButton from "./Button";
 import axios from "axios";
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      showDetails: true,
-      name: "Pizza Pizza",
-      address: "181 Wynford Drive",
-      halalness: true,
-      rating: 5
-    };
-  }
+const App = () => {
+  const [showDetails, setShowDetails] = useState(false);
+  const [name, setName] = useState("Pizza Pizza");
+  const [address, setAddress] = useState("Multiple");
+  const [halalness, setHalalness] = useState("true");
+  const rating = 5;
 
-  render() {
-    return (
-      <div>
-        <div className="main">
-          <Container>
-            <Title className="title" title="Is it Halal?"></Title>
-            <TextBoxOne></TextBoxOne>
-            <SearchBoxArea></SearchBoxArea>
-            {this.state.showDetails ? (
-              <Results
-                name={this.state.name}
-                address={this.state.address}
-                halalness={this.state.halalness}
-                rating={this.state.rating}
-              ></Results>
-            ) : null}
-          </Container>
-        </div>
+  return (
+    <div>
+      <div className="main">
+        <Container>
+          <Title className="title" title="Is it Halal?"></Title>
+          <TextBoxOne></TextBoxOne>
+          <SearchBoxArea></SearchBoxArea>
+          {showDetails ? (
+            <Results
+              name={name}
+              address={address}
+              halalness={halalness}
+              rating={rating}
+            ></Results>
+          ) : null}
+          <SubmitButton></SubmitButton>
+        </Container>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;
 
